@@ -67,7 +67,7 @@ impl<'de> Deserialize<'de> for BuildInfo {
     {
         #[derive(Deserialize)]
         struct Proxy {
-            build_number: String,
+            build_number: Option<String>,
             prerelease: Option<bool>,
             created_at: Option<String>,
             release: Option<Value>,
@@ -75,7 +75,8 @@ impl<'de> Deserialize<'de> for BuildInfo {
 
         let proxy = Proxy::deserialize(deserializer)?;
 
-        let mut tag_name = proxy.build_number.clone();
+        let build_number = proxy.build_number.unwrap_or_default();
+        let mut tag_name = build_number.clone();
         let mut prerelease = proxy.prerelease.unwrap_or(false);
         let mut created_at = proxy.created_at.unwrap_or_default();
 
@@ -93,7 +94,7 @@ impl<'de> Deserialize<'de> for BuildInfo {
         }
 
         Ok(BuildInfo {
-            build_number: proxy.build_number,
+            build_number,
             tag_name,
             prerelease,
             created_at,
