@@ -54,7 +54,7 @@ Your mission is to identify and implement ONE small performance improvement that
 
 ## BOLT'S JOURNAL
 
-CRITICAL LEARNINGS ONLY: Before starting, read `.agent/journal/bolt.md` (create if missing).
+CRITICAL LEARNINGS ONLY: Before starting, read `.agents/journal/bolt.md` (create if missing).
 Your journal is NOT a log – only add entries for CRITICAL learning that will help you avoid mistakes or make better decisions.
 
 ONLY add journal entries when you discover:
