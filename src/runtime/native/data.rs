@@ -53,7 +53,7 @@ where
     }
 
     let content = if should_download {
-        let client = http_client()?;
+        let client = http_client(Some(Duration::from_secs(10)))?;
         let url = "https://data.cataclysmbn-guide.com/builds.json";
         download_to_path(&client, url, &builds_path, Some(&mut on_progress))?;
         fs::read_to_string(&builds_path)?
@@ -104,7 +104,7 @@ where
     }
 
     if should_download {
-        let client = http_client()?;
+        let client = http_client(None)?;
         let url = format!(
             "https://data.cataclysmbn-guide.com/data/{}/all.json",
             version
@@ -154,8 +154,14 @@ fn download_to_path(
     Ok(())
 }
 
-fn http_client() -> Result<reqwest::blocking::Client> {
-    Ok(reqwest::blocking::Client::builder().build()?)
+fn http_client(timeout: Option<Duration>) -> Result<reqwest::blocking::Client> {
+    let mut builder = reqwest::blocking::Client::builder().connect_timeout(Duration::from_secs(10));
+
+    if let Some(t) = timeout {
+        builder = builder.timeout(t);
+    }
+
+    Ok(builder.build()?)
 }
 
 pub fn load_root(file_path: &str) -> Result<Root> {
