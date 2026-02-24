@@ -12,6 +12,44 @@ use crate::{matcher, ui as ui_mod};
 use ratatui::{text::Span, widgets::ListState};
 use tui_scrollview::ScrollViewState;
 
+const WELCOME_DETAILS_LINES: &[&str] = &[
+    "Welcome to Cataclysm Browser Module!",
+    "\n",
+    "Quick Start:",
+    "  • Type to filter the list instantly.",
+    "  • Click any property to add it to your filter.",
+    "  • Ctrl+Click a property to jump straight to its ID.",
+    "\n",
+    "Search Syntax:",
+    "  • t:MONSTER       filter by type",
+    "  • bash.str_min:30 nested field search",
+    "  • 'shot'          exact match",
+    "\n",
+    "Shortcuts:",
+    "  • /     Focus filter",
+    "  • ?     Show full help",
+    "  • q     Quit",
+    "\n",
+    "Command line:",
+    "  • --source C-BN/data/json",
+    "  • --game   2026-01-02",
+    "  • --help   full help",
+];
+
+fn plain_details_lines(lines: &[&str]) -> Vec<Vec<AnnotatedSpan>> {
+    lines
+        .iter()
+        .map(|line| {
+            vec![AnnotatedSpan {
+                span: Span::raw((*line).to_string()),
+                kind: JsonSpanKind::Whitespace,
+                key_context: None,
+                span_id: None,
+            }]
+        })
+        .collect()
+}
+
 /// Current input mode for the application.
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum InputMode {
@@ -275,12 +313,11 @@ impl AppState {
                 }
             }
         } else {
-            self.details_annotated = vec![vec![AnnotatedSpan {
-                span: Span::raw("Select an item to view details"),
-                kind: JsonSpanKind::Whitespace,
-                key_context: None,
-                span_id: None,
-            }]];
+            self.details_annotated = if self.filter_text.trim().is_empty() {
+                plain_details_lines(WELCOME_DETAILS_LINES)
+            } else {
+                plain_details_lines(&["Select an item to view details"])
+            };
         }
         // Invalidate wrapped cache so render_details re-wraps for the new content.
         self.details_wrapped_width = 0;
@@ -497,6 +534,7 @@ impl AppState {
         game_version: String,
         game_version_key: String,
     ) {
+        let is_initial_load = self.indexed_items.is_empty() && self.total_items == 0;
         let filter_text = self.filter_text.clone();
         let filter_cursor = self.filter_cursor.min(filter_text.chars().count());
 
@@ -518,6 +556,14 @@ impl AppState {
         self.filter_text = filter_text;
         self.filter_cursor = filter_cursor;
         self.update_filter();
+
+        if is_initial_load
+            && self.filter_text.trim().is_empty()
+            && !self.filtered_indices.is_empty()
+        {
+            self.list_state.select(None);
+            self.refresh_details();
+        }
     }
 
     pub fn start_progress(&mut self, title: impl Into<String>, stages: &[&str]) {
@@ -562,5 +608,74 @@ impl AppState {
         self.filter_text.clear();
         self.filter_cursor = 0;
         self.update_filter();
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use crate::theme;
+    use serde_json::json;
+
+    fn make_item(id: &str, item_type: &str) -> IndexedItem {
+        IndexedItem {
+            value: json!({ "id": id, "type": item_type }),
+            id: id.to_string(),
+            item_type: item_type.to_string(),
+        }
+    }
+
+    fn make_app(items: Vec<IndexedItem>) -> AppState {
+        let total = items.len();
+        let search_index = SearchIndex::build(&items);
+        AppState::new(
+            items,
+            search_index,
+            theme::Theme::Dracula.config(),
+            "v1".to_string(),
+            "v1".to_string(),
+            "v1".to_string(),
+            false,
+            total,
+            0.0,
+            std::path::PathBuf::new(),
+            None,
+        )
+    }
+
+    #[test]
+    fn test_refresh_details_shows_welcome_text_when_no_selection_and_empty_filter() {
+        let mut app = make_app(vec![make_item("test", "MONSTER")]);
+        app.list_state.select(None);
+        app.refresh_details();
+
+        assert_eq!(app.list_state.selected(), None);
+        assert_eq!(
+            app.details_annotated[0][0].span.content,
+            "Welcome to cbn-tui."
+        );
+    }
+
+    #[test]
+    fn test_apply_new_dataset_initial_load_keeps_list_unselected() {
+        let mut app = make_app(Vec::new());
+        let items = vec![make_item("glock_19", "GUN")];
+        let search_index = SearchIndex::build(&items);
+
+        app.apply_new_dataset(
+            items,
+            search_index,
+            1,
+            0.0,
+            "v1".to_string(),
+            "v1".to_string(),
+        );
+
+        assert_eq!(app.list_state.selected(), None);
+        assert_eq!(app.filtered_indices.len(), 1);
+        assert_eq!(
+            app.details_annotated[0][0].span.content,
+            "Welcome to cbn-tui."
+        );
     }
 }

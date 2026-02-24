@@ -606,7 +606,6 @@ mod tests {
     use crossterm::event::{KeyModifiers, MouseButton, MouseEvent, MouseEventKind};
     use ratatui::layout::Rect;
     use serde_json::json;
-
     const SCROLL_LINES: u16 = 1;
 
     #[test]
