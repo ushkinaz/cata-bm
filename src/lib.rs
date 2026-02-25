@@ -1,4 +1,4 @@
-//! cbn-tui library: shared application core for native and web runtimes.
+//! cata-bm library: shared application core for native and web runtimes.
 
 pub mod app_core;
 pub mod matcher;

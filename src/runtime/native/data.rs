@@ -16,7 +16,7 @@ pub struct DownloadProgress {
 }
 
 pub fn get_cache_dir() -> Result<std::path::PathBuf> {
-    let project_dirs = directories::ProjectDirs::from("com", "cataclysmbn", "cbn-tui")
+    let project_dirs = directories::ProjectDirs::from("com", "cataclysmbn", "cata-bm")
         .ok_or_else(|| anyhow::anyhow!("Could not determine cache directory"))?;
     let cache_dir = project_dirs.cache_dir().to_path_buf();
     fs::create_dir_all(&cache_dir)?;
@@ -24,7 +24,7 @@ pub fn get_cache_dir() -> Result<std::path::PathBuf> {
 }
 
 pub fn get_data_dir() -> Result<std::path::PathBuf> {
-    let project_dirs = directories::ProjectDirs::from("com", "cataclysmbn", "cbn-tui")
+    let project_dirs = directories::ProjectDirs::from("com", "cataclysmbn", "cata-bm")
         .ok_or_else(|| anyhow::anyhow!("Could not determine data directory"))?;
     let data_dir = project_dirs.data_dir().to_path_buf();
     fs::create_dir_all(&data_dir)?;

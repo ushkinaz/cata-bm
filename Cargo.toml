@@ -1,13 +1,13 @@
 [package]
-name = "cbn-tui"
+name = "cata-bm"
 description = "TUI browser for 'Cataclysm: Bright Nights' JSON data."
-homepage = "https://github.com/ushkinaz/cbn-tui"
+homepage = "https://github.com/ushkinaz/cata-bm"
 version = "0.3.1"
-repository = "https://github.com/ushkinaz/cbn-tui"
+repository = "https://github.com/ushkinaz/cata-bm"
 authors = ["Ushkinaz <ushkinaz@gmail.com>"]
 edition = "2024"
 autobins = false
-default-run = "cbn-tui"
+default-run = "cata-bm"
 
 [features]
 default = []
@@ -39,11 +39,11 @@ wasm-bindgen-futures = { version = "0.4.51" }
 web-sys = { version = "0.3.85", features = ["Window", "Document", "Element", "HtmlElement", "DomRect"] }
 
 [[bin]]
-name = "cbn-tui"
+name = "cata-bm"
 path = "src/runtime/native/main.rs"
 
 [[bin]]
-name = "cbn-web"
+name = "cbm-web"
 path = "src/runtime/web/main.rs"
 required-features = ["web"]
 

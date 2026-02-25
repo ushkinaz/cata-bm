@@ -75,7 +75,7 @@ For each changed behavior, verify:
 
 6. Dependency/config parity:
 - Runtime-specific deps remain target-gated in `Cargo.toml`.
-- Bin names/paths stay accurate (`cbn-tui`, `cbn-web`).
+- Bin names/paths stay accurate (`cata-bm`, `cbm-web`).
 
 ## Verification Commands
 
@@ -84,7 +84,7 @@ Run all of these before finishing:
 ```bash
 cargo fmt --all
 cargo test --offline
-cargo check --offline --features web --bin cbn-web --target wasm32-unknown-unknown
+cargo check --offline --features web --bin cbm-web --target wasm32-unknown-unknown
 ```
 
 If behavior changed and tests do not cover it, add tests in shared modules first:
@@ -112,7 +112,7 @@ Parity scope:
 
 Validation:
 - cargo test --offline
-- cargo check --offline --features web --bin cbn-web --target wasm32-unknown-unknown
+- cargo check --offline --features web --bin cbm-web --target wasm32-unknown-unknown
 
 Known platform differences:
 - (example: ratzilla wheel events unavailable in on_mouse_event)

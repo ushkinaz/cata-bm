@@ -1,17 +1,17 @@
-//! # cbn-tui
+//! # cata-bm
 //!
 //! A terminal user interface (TUI) for browsing Cataclysm: Bright Nights game data.
 
 use anyhow::Result;
-use cbn_tui::app_core::indexing::{
+use cata_bm::app_core::indexing::{
     ITEMS_PROGRESS_WEIGHT, build_indexed_items, build_version_entries_from_builds,
     progress_ratio as shared_progress_ratio, resolve_game_version_label,
 };
-use cbn_tui::app_core::input::{AppKeyCode, AppKeyEvent, AppMouseEvent, AppMouseKind};
-use cbn_tui::app_core::reducer;
-use cbn_tui::app_core::state::{AppAction, AppState};
-use cbn_tui::runtime::native::data;
-use cbn_tui::{model, search_index, theme, ui};
+use cata_bm::app_core::input::{AppKeyCode, AppKeyEvent, AppMouseEvent, AppMouseKind};
+use cata_bm::app_core::reducer;
+use cata_bm::app_core::state::{AppAction, AppState};
+use cata_bm::runtime::native::data;
+use cata_bm::{model, search_index, theme, ui};
 use clap::Parser;
 use crossterm::{
     event::{
@@ -33,7 +33,7 @@ use std::time::{Duration, Instant};
     author,
     version,
     about,
-    long_about = "CBN-TUI: A terminal user interface for browsing Cataclysm: Bright Nights game data.\n\
+    long_about = "cata-bm: A terminal user interface for browsing Cataclysm: Bright Nights game data.\n\
                   Supports searching through items, monsters, and other game entities with a built-in search index."
 )]
 struct Args {
@@ -600,9 +600,9 @@ where
 #[cfg(test)]
 mod tests {
     use super::*;
-    use cbn_tui::app_core::state::{AppState, FocusPane, InputMode};
-    use cbn_tui::model::IndexedItem;
-    use cbn_tui::{search_index, theme, ui};
+    use cata_bm::app_core::state::{AppState, FocusPane, InputMode};
+    use cata_bm::model::IndexedItem;
+    use cata_bm::{search_index, theme, ui};
     use crossterm::event::{KeyModifiers, MouseButton, MouseEvent, MouseEventKind};
     use ratatui::layout::Rect;
     use serde_json::json;
@@ -823,7 +823,7 @@ mod tests {
         }];
         let search_index = search_index::SearchIndex::build(&indexed_items);
         let theme = theme::Theme::Dracula.config();
-        let history_path = std::path::PathBuf::from("/tmp/cbn_test_history.txt");
+        let history_path = std::path::PathBuf::from("/tmp/cbm_test_history.txt");
         if history_path.exists() {
             let _ = fs::remove_file(&history_path);
         }

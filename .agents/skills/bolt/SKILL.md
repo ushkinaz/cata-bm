@@ -108,7 +108,7 @@ GENERAL OPTIMIZATIONS:
    - Can be implemented cleanly in < 50 lines of Rust.
    - Don't sacrifice code readability significantly (leverage Rust's expressiveness).
    - Has a low risk of introducing regressions or panics.
-   - Follows existing `cbn-tui` patterns.
+   - Follows existing `cata-bm` patterns.
 
 2. OPTIMIZE – Implement with precision:
 

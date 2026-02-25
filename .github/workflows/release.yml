@@ -21,16 +21,16 @@ jobs:
       matrix:
         include:
           - os: ubuntu-latest
-            asset_name: cbn-tui-linux-x86_64
+            asset_name: cata-bm-linux-x86_64
             target: x86_64-unknown-linux-gnu
           - os: windows-latest
-            asset_name: cbn-tui-windows-x86_64.exe
+            asset_name: cata-bm-windows-x86_64.exe
             target: x86_64-pc-windows-msvc
           - os: macos-latest
-            asset_name: cbn-tui-macos-x86_64
+            asset_name: cata-bm-macos-x86_64
             target: x86_64-apple-darwin
           - os: macos-latest
-            asset_name: cbn-tui-macos-arm64
+            asset_name: cata-bm-macos-arm64
             target: aarch64-apple-darwin
 
     steps:
@@ -51,9 +51,9 @@ jobs:
         shell: bash
         run: |
           if [ "${{ matrix.os }}" = "windows-latest" ]; then
-            cp target/${{ matrix.target }}/release/cbn-tui.exe ${{ matrix.asset_name }}
+            cp target/${{ matrix.target }}/release/cata-bm.exe ${{ matrix.asset_name }}
           else
-            cp target/${{ matrix.target }}/release/cbn-tui ${{ matrix.asset_name }}
+            cp target/${{ matrix.target }}/release/cata-bm ${{ matrix.asset_name }}
           fi
 
       - name: Extract Release Notes

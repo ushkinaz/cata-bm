@@ -1,4 +1,4 @@
-# cbn-tui 🚀
+# Cataclysm Browser Module (cata-bm)
 
 Terminal User Interface (TUI) browser for (mainly) **Cataclysm: Bright Nights** JSON data.
 
@@ -66,19 +66,19 @@ And then I had had enough.
 Launch the application and specify a game version. It will automatically download and cache the data for you:
 
 ```bash
-cbn-tui --game nightly
+cata-bm --game nightly
 ```
 
 Or
 
 ```bash
-cbn-tui --file path/to/your/data.json
-cbn-tui --source path/to/cataclysm-data/
+cata-bm --file path/to/your/data.json
+cata-bm --source path/to/cataclysm-data/
 ```
 
 ### Other Options
-- **List available game versions**: `cbn-tui --game-versions`
-- **Force refresh cached data**: `cbn-tui --game stable --force`
+- **List available game versions**: `cata-bm --game-versions`
+- **Force refresh cached data**: `cata-bm --game stable --force`
 
 ## 🌐 Web Version (Ratzilla)
 

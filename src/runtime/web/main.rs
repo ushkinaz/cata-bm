@@ -5,7 +5,7 @@
 
 #[cfg(not(target_arch = "wasm32"))]
 fn main() {
-    eprintln!("cbn-web must be built for wasm32-unknown-unknown");
+    eprintln!("cbm-web must be built for wasm32-unknown-unknown");
 }
 
 // ---------------------------------------------------------------------------
@@ -15,25 +15,25 @@ fn main() {
 #[cfg(target_arch = "wasm32")]
 use anyhow::Result;
 #[cfg(target_arch = "wasm32")]
-use cbn_tui::app_core::indexing::{
+use cata_bm::app_core::indexing::{
     ITEMS_PROGRESS_WEIGHT, build_indexed_items, resolve_game_version_label,
 };
 #[cfg(target_arch = "wasm32")]
-use cbn_tui::app_core::input::{AppKeyCode, AppKeyEvent, AppMouseEvent, AppMouseKind};
+use cata_bm::app_core::input::{AppKeyCode, AppKeyEvent, AppMouseEvent, AppMouseKind};
 #[cfg(target_arch = "wasm32")]
-use cbn_tui::app_core::reducer;
+use cata_bm::app_core::reducer;
 #[cfg(target_arch = "wasm32")]
-use cbn_tui::app_core::state::{AppAction, AppState, VersionEntry};
+use cata_bm::app_core::state::{AppAction, AppState, VersionEntry};
 #[cfg(target_arch = "wasm32")]
-use cbn_tui::app_core::web_mouse::{PixelRect, mouse_pixels_to_cell};
+use cata_bm::app_core::web_mouse::{PixelRect, mouse_pixels_to_cell};
 #[cfg(target_arch = "wasm32")]
-use cbn_tui::model::{IndexedItem, Root};
+use cata_bm::model::{IndexedItem, Root};
 #[cfg(target_arch = "wasm32")]
-use cbn_tui::runtime::web::data;
+use cata_bm::runtime::web::data;
 #[cfg(target_arch = "wasm32")]
-use cbn_tui::search_index::SearchIndex;
+use cata_bm::search_index::SearchIndex;
 #[cfg(target_arch = "wasm32")]
-use cbn_tui::ui;
+use cata_bm::ui;
 #[cfg(target_arch = "wasm32")]
 use js_sys::Promise;
 #[cfg(target_arch = "wasm32")]
@@ -421,7 +421,7 @@ fn main() -> Result<()> {
 
     let app_version = format!("v{}", env!("CARGO_PKG_VERSION"));
     let theme_name = "dracula";
-    use cbn_tui::theme;
+    use cata_bm::theme;
     let theme_enum = theme::Theme::from_str(theme_name).map_err(anyhow::Error::msg)?;
     let theme = theme_enum.config();
 

@@ -1,4 +1,4 @@
-# Agent Guide for cbn-tui
+# Agent Guide for cata-bm
 
 Purpose
 - Terminal UI browser for Cataclysm: Bright Nights JSON data.

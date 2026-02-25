@@ -75,11 +75,11 @@ jobs:
 
           # Update comparison links at the bottom
           # 1. Update [Unreleased] link to point from new tag to HEAD
-          sed -i "s|^\[Unreleased\]:.*|\[Unreleased\]: https://github.com/ushkinaz/cbn-tui/compare/v$NEW_VERSION...HEAD|" CHANGELOG.md
+          sed -i "s|^\[Unreleased\]:.*|\[Unreleased\]: https://github.com/ushkinaz/cata-bm/compare/v$NEW_VERSION...HEAD|" CHANGELOG.md
           
           # 2. Add the new version link pointing from previous tag to new tag
           # Find the line after [Unreleased] and insert the new version link
-          sed -i "/^\[Unreleased\]:/a \[$NEW_VERSION\]: https://github.com/ushkinaz/cbn-tui/compare/v$PREV_VERSION...v$NEW_VERSION" CHANGELOG.md
+          sed -i "/^\[Unreleased\]:/a \[$NEW_VERSION\]: https://github.com/ushkinaz/cata-bm/compare/v$PREV_VERSION...v$NEW_VERSION" CHANGELOG.md
 
       - name: Commit and Push
         run: |
