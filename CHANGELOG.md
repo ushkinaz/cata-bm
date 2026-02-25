@@ -9,19 +9,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### New Features
 
+- **Interactive JSON Navigation**: Click JSON fields to filter, and Ctrl-click IDs to jump to related items.
 - **Local Source Mode**: Support for loading and browsing multiple JSON files from a local directory (In-source mode).
-- **Interactive JSON Navigation**: Navigate through game data by clicking on IDs or specific fields within the JSON details pane to instantly filter and jump to related items.
-- **Comprehensive Mouse Support**: Full interactivity with the TUI
+- **Initial web runtime**: Added a browser-based web port (Ratzilla) so the app can be used outside the terminal.
 
-### Performance
+### Changes
 
 - **Low-latency UI**: Significant optimizations to rendering and JSON highlighting, resulting in a more responsive interface and zero flickering during navigation.
-- **Caching Improvements**: Implemented eager caching for display strings and rendered details to eliminate redundant calculations.
+- **Clearer startup and empty states**: Added a welcome message on first load and improved messaging when a filter returns no results.
+- **More resilient downloads**: Network requests now use timeouts so stalled requests fail faster instead of hanging.
 
 ### Bugfixes
 
 - Fixed an issue where the filter input became uneditable when the text exceeded the visible width.
 - Fixed background color inconsistencies across different themes.
+- Fixed `Ctrl-R` reload for source data.
+- Fixed `Shift-Tab` (`BackTab`) pane navigation.
  
 
 ## [0.3.1] - 2026-02-19
