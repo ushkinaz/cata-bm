@@ -5,6 +5,7 @@ homepage = "https://cbm.cataclysmbn-guide.com/"
 keywords = ["tui", "cataclysm", "cataclysm-bn",  "json-browser"]
 version = "0.4.0"
 authors = ["Ushkinaz <ushkinaz@gmail.com>"]
+license = "MIT"
 repository = "https://github.com/ushkinaz/cata-bm"
 include = ["src/**/*", "Cargo.toml", "README.md", "LICENSE"]
 edition = "2024"
