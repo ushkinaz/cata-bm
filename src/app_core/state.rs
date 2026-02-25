@@ -652,7 +652,7 @@ mod tests {
         assert_eq!(app.list_state.selected(), None);
         assert_eq!(
             app.details_annotated[0][0].span.content,
-            "Welcome to cata-bm."
+            "Welcome to Cataclysm Browser Module!"
         );
     }
 
@@ -675,7 +675,7 @@ mod tests {
         assert_eq!(app.filtered_indices.len(), 1);
         assert_eq!(
             app.details_annotated[0][0].span.content,
-            "Welcome to cata-bm."
+            "Welcome to Cataclysm Browser Module!"
         );
     }
 }
