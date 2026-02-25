@@ -24,6 +24,8 @@ A sister project to [Cataclysm:BN Guide](https://github.com/ushkinaz/cbn-guide) 
 
 Go to [releases](https://github.com/ushkinaz/cata-bm/releases) and download the latest binary for your platform.
 
+Install from Rust [crates](https://crates.io/): `cargo install cata-bm --bin cata-bm`
+
 ## Controls
 
 ### Global
