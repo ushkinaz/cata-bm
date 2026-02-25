@@ -1,91 +1,99 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"/>
     <link data-trunk rel="icon" type="image/png" href="public/favicon.svg"/>
 
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content="Cataclysm Browser Module" />
-    <meta property="og:description" content="Browser games data files with simple queries" />
-    <meta property="og:url" content="https://cbm.cataclysmbn-guide.com/" />
-    <meta name="color-scheme" content="dark" />
+    <meta property="og:type" content="website"/>
+    <meta property="og:title" content="Cataclysm Browser Module"/>
+    <meta property="og:description" content="Browser games data files with simple queries"/>
+    <meta property="og:url" content="https://cbm.cataclysmbn-guide.com/"/>
+    <meta name="color-scheme" content="dark"/>
 
-    <link data-trunk rel="copy-file" href="public/og-image.png" />
-    <meta property="og:image" content="/og-image.png" />
+    <link data-trunk rel="copy-file" href="public/og-image.png"/>
+    <meta property="og:image" content="/og-image.png"/>
 
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:image" content="/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image"/>
+    <meta name="twitter:image" content="/og-image.png"/>
     <title>Cataclysm Browser Module | Web preview</title>
     <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/juliamono/0.061/juliamono-regular.css"
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/juliamono/0.061/juliamono-regular.css"
     />
-    <link data-trunk rel="rust" data-bin="cbm-web" />
+    <link data-trunk rel="rust" data-bin="cbm-web"/>
     <style>
-      :root {
-        --bg: #1e1e2e;
-        --canvas: #0f0f17;
-      }
+        :root {
+            --bg: #1e1e2e;
+            --canvas: #0f0f17;
+        }
 
-      body {
-        width: 100%;
-        height: 100vh;
-        margin: 0;
-        padding: 0;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background-color: var(--canvas);
-        overflow: hidden;
-      }
+        body {
+            width: 100%;
+            height: 100vh;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--canvas);
+            overflow: hidden;
+        }
 
-      #grid {
-        flex: 1;
-        margin: 0;
-        width: 100%;
-        height: 100vh;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        align-content: center;
-        background-color: var(--bg);
-      }
+        #grid {
+            flex: 1;
+            margin: 0;
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            align-content: center;
+            background-color: var(--bg);
+        }
 
-      pre {
-        margin: 0;
-        font-family: "JuliaMono", monospace;
-        font-size: 14px;
-        line-height: 1.1;
-      }
-      #disclaimer {
-        position: absolute;
-        top: 0;
-        width: 100%;
-        background: rgba(15, 15, 23, 0.8);
-        color: #bd93f9;
-        text-align: center;
-        font-family: system-ui, -apple-system, sans-serif;
-        font-size: 13px;
-        padding: 6px 0;
-        z-index: 100;
-      }
-      #disclaimer a {
-        color: #4da6ff;
-        text-decoration: none;
-      }
-      #disclaimer a:hover {
-        text-decoration: underline;
-      }
+        pre {
+            margin: 0;
+            font-family: "JuliaMono", monospace;
+            font-size: 14px;
+            line-height: 1.1;
+        }
+
+        #disclaimer {
+            position: absolute;
+            top: 0;
+            width: 100%;
+            background: rgba(15, 15, 23, 0.8);
+            color: #bd93f9;
+            text-align: center;
+            font-family: system-ui, -apple-system, sans-serif;
+            font-size: 13px;
+            padding: 6px 0;
+            z-index: 100;
+        }
+
+        #disclaimer a {
+            color: #4da6ff;
+            text-decoration: none;
+        }
+
+        #disclaimer a:hover {
+            text-decoration: underline;
+        }
     </style>
-  </head>
-  <body>
-    <div id="disclaimer">
-      Download full version of CBM from
-      <a href="https://github.com/ushkinaz/cata-bm/?tab=readme-ov-file#-install" target="_blank"
-        rel="noopener noreferrer">GitHub</a>. Web version has limitations, namely in performance, file access and mouse support.
+</head>
+<body>
+<div id="disclaimer">
+    <div style="display: flex; gap: 10px; align-items: center; justify-content: center; margin-bottom: 10px;">
+        Welcome to the Cataclysm Browser Module (CBM) web preview. Browse live stable and nightly data for Cataclysm:
+        Bright Nights here.
     </div>
-    <div id="grid"></div>
-  </body>
+    For full performance and local file support, <a
+        href="https://github.com/ushkinaz/cata-bm/?tab=readme-ov-file#-installation" target="_blank"
+        rel="noopener noreferrer">download</a> the desktop application from GitHub. This web version is a lite preview
+    with limited file access and mouse integration.
+</div>
+<div id="grid"></div>
+</body>
 </html>
