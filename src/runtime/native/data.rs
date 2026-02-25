@@ -219,24 +219,9 @@ pub fn load_from_source(source_dir: &str, warnings: &mut Vec<String>) -> Result<
                                 data.push(obj);
                             }
                         }
-                        Ok(Value::Object(obj)) => {
-                            if let Some(id_val) = obj.get("id").and_then(|v| v.as_str()) {
-                                let type_val =
-                                    obj.get("type").and_then(|v| v.as_str()).unwrap_or("");
-                                if !type_id_set.insert((type_val.to_string(), id_val.to_string())) {
-                                    warnings.push(format!(
-                                        "Duplicate ID shadowed: {} ({}) in {}",
-                                        id_val,
-                                        type_val,
-                                        entry.path().display()
-                                    ));
-                                }
-                            }
-                            data.push(Value::Object(obj));
-                        }
                         Ok(_) => {
                             warnings.push(format!(
-                                "File {} contains neither array nor object",
+                                "File {} has unsupported root type. Array expected",
                                 entry.path().display()
                             ));
                         }
