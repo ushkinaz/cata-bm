@@ -1,6 +1,6 @@
 # cbn-tui 🚀
 
-Terminal User Interface (TUI) browser for **Cataclysm: Bright Nights** JSON data.
+Terminal User Interface (TUI) browser for (mainly) **Cataclysm: Bright Nights** JSON data.
 
 <a href="https://asciinema.org/a/791876" target="_blank"><img src="https://asciinema.org/a/791876.svg" /></a>
 
