@@ -25,21 +25,18 @@
     <style>
       :root {
         --bg: #1e1e2e;
+        --canvas: #0f0f17;
       }
 
-      html,
       body {
         width: 100%;
-        height: 100%;
+        height: 100vh;
         margin: 0;
         padding: 0;
-      }
-
-      body {
         display: flex;
-        align-items: stretch;
-        justify-content: stretch;
-        background: radial-gradient(circle at 20% 0%, #313244 0%, var(--bg) 45%, #181825 100%);
+        align-items: center;
+        justify-content: center;
+        background-color: var(--canvas);
         overflow: hidden;
       }
 
@@ -53,18 +50,42 @@
         justify-content: center;
         align-items: center;
         align-content: center;
-        background-color: #282a36;
+        background-color: var(--bg);
       }
 
       pre {
         margin: 0;
         font-family: "JuliaMono", monospace;
         font-size: 14px;
-        line-height: 1.4;
+        line-height: 1.1;
+      }
+      #disclaimer {
+        position: absolute;
+        top: 0;
+        width: 100%;
+        background: rgba(15, 15, 23, 0.8);
+        color: #bd93f9;
+        text-align: center;
+        font-family: system-ui, -apple-system, sans-serif;
+        font-size: 13px;
+        padding: 6px 0;
+        z-index: 100;
+      }
+      #disclaimer a {
+        color: #4da6ff;
+        text-decoration: none;
+      }
+      #disclaimer a:hover {
+        text-decoration: underline;
       }
     </style>
   </head>
   <body>
+    <div id="disclaimer">
+      Download full version of CBM from
+      <a href="https://github.com/ushkinaz/cbn-tui/?tab=readme-ov-file#-install" target="_blank"
+        rel="noopener noreferrer">GitHub</a>. Web version has severe limitations, for instance mouse support apps is very limited.
+    </div>
     <div id="grid"></div>
   </body>
 </html>
