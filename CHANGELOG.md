@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.4.0] - 2026-02-25
+
 ### New Features
 
 - **Interactive JSON Navigation**: Click JSON fields to filter, and Ctrl-click IDs to jump to related items.
@@ -84,7 +86,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **Dual-Pane Layout**: Side-by-side list and details view for easy browsing.
 - **Real-Time Filtering**: Dynamic filtering of entries based on user input.
 
-[Unreleased]: https://github.com/ushkinaz/cata-bm/compare/v0.3.1...HEAD
+[Unreleased]: https://github.com/ushkinaz/cata-bm/compare/v0.4.0...HEAD
+[0.4.0]: https://github.com/ushkinaz/cata-bm/compare/v0.3.1...v0.4.0
 [0.3.1]: https://github.com/ushkinaz/cata-bm/compare/v0.3.0...v0.3.1
 [0.3.0]: https://github.com/ushkinaz/cata-bm/compare/v0.2.0...v0.3.0
 [0.2.0]: https://github.com/ushkinaz/cata-bm/compare/v0.1.0...v0.2.0
