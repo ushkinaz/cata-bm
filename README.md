@@ -4,24 +4,25 @@ Terminal User Interface (TUI) browser for (mainly) **Cataclysm: Bright Nights** 
 
 <a href="https://asciinema.org/a/791876" target="_blank"><img src="https://asciinema.org/a/791876.svg" /></a>
 
+A sister project to [Cataclysm:BN Guide](https://github.com/ushkinaz/cbn-guide) and [CBN data](https://github.com/ushkinaz/cbn-data).
 
 ## Features
  
-- Click on a property value to filter by it. Ctrl-click filters by that object's ID.
-- Filter entities as you type. 
+- Filter entities as you type.
 - Downloads game [data](https://data.cataclysmbn-guide.com/) directly.
-- Can be used locally, if you have a copy of the game data.
+- Can be used locally if you have a copy of the game data.
 - Simple search syntax:
-  - `id:zombie` or `i:zombie` - Filter by ID.
-  - `type:MONSTER` or `t:MONSTER` - Filter by record type.
-  - `category:weapon` or `c:weapon` - Filter by category.
-  - `bash.str_min:10` - Deep field search using dot-notation.
-  - `term1 term2` - Combine multiple terms (AND logic).
-- Switch between game versions in app.
+  - `id:zombie` or `i:zombie` - Filter by ID;
+  - `type:MONSTER` or `t:MONSTER` - Filter by record type;
+  - `category:weapon` or `c:weapon` - Filter by category;
+  - `bash.str_min:10` - Deep field search using dot-notation;
+  - `term1 term2` - Combine multiple terms (AND logic);
+- Click on a property value to filter by it. Ctrl-click filters by that object's ID.
+- Switch between game versions in the app.
 
 ## Installation
 
-Go to [Releases](https://github.com/ushkinaz/cata-bm/releases) and download the latest binary for your platform.
+Go to [releases](https://github.com/ushkinaz/cata-bm/releases) and download the latest binary for your platform.
 
 ## Controls
 
@@ -63,7 +64,7 @@ cata-bm --source path/to/cataclysm-data/
 - **List available game versions**: `cata-bm --game-versions`
 - **Force refresh cached data**: `cata-bm --game stable --force`
 
-## 👴 History
+## History
 
 When I started writing code for Cataclysm:BN [guide](https://cataclysmbn-guide.com/),
 I found myself constantly trying to query the data files with simple search. Then — with jq.
