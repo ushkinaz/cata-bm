@@ -5,6 +5,64 @@ Terminal User Interface (TUI) browser for (mainly) **Cataclysm: Bright Nights** 
 <a href="https://asciinema.org/a/791876" target="_blank"><img src="https://asciinema.org/a/791876.svg" /></a>
 
 
+## Features
+ 
+- Click on a property value to filter by it. Ctrl-click filters by that object's ID.
+- Filter entities as you type. 
+- Downloads game [data](https://data.cataclysmbn-guide.com/) directly.
+- Can be used locally, if you have a copy of the game data.
+- Simple search syntax:
+  - `id:zombie` or `i:zombie` - Filter by ID.
+  - `type:MONSTER` or `t:MONSTER` - Filter by record type.
+  - `category:weapon` or `c:weapon` - Filter by category.
+  - `bash.str_min:10` - Deep field search using dot-notation.
+  - `term1 term2` - Combine multiple terms (AND logic).
+- Switch between game versions in app.
+
+## Installation
+
+Go to [Releases](https://github.com/ushkinaz/cata-bm/releases) and download the latest binary for your platform.
+
+## Controls
+
+### Global
+| Key                 | Action                               |
+|---------------------|--------------------------------------|
+| `Tab` / `Shift+Tab` | Cycle focus                          |
+| `Ctrl+G`            | Version Switcher                     |
+| `Ctrl+R`            | Reload Local Source (In-source mode) |
+| `?`                 | Help Overlay                         |
+| `q`                 | Quit                                 |
+
+### Filter Input
+| Key                 | Action                        |
+|---------------------|-------------------------------|
+| `↑` / `↓`           | Search history                |
+| `Ctrl+U`            | Clear filter                  |
+| `Ctrl+W`            | Delete last word              |
+| `Ctrl+A` / `Ctrl+E` | Move to start / end of line   |
+| `Enter`             | Confirm search and focus List |
+
+## Usage
+
+### Automatic Data Download
+Launch the application and specify a game version. It will automatically download and cache the data for you:
+
+```bash
+cata-bm --game nightly
+```
+
+Or
+
+```bash
+cata-bm --file path/to/your/data.json
+cata-bm --source path/to/cataclysm-data/
+```
+
+### Other Options
+- **List available game versions**: `cata-bm --game-versions`
+- **Force refresh cached data**: `cata-bm --game stable --force`
+
 ## 👴 History
 
 When I started writing code for Cataclysm:BN [guide](https://cataclysmbn-guide.com/),
@@ -25,79 +83,6 @@ fzf --preview 'echo {} | jq -C .'
 [flatten.jq](flatten.jq) is a "simple" jq script that flattens game data. And I still had to change `select(.type=="GUNMOD" and has("aim_speed"))` every time.
 
 And then I had had enough.
-
-## ✨ Features
-
-- **Click your way**: Click on a property value to filter by it. Ctrl-click filters by that object's ID.
-- **Freaking Fast**: Instantly browse and search through thousands of game objects.
-- **Up to date**: Automatically download and cache game [data](https://data.cataclysmbn-guide.com/) directly.
-- **Advanced Search Syntax**: Powerful filtering with support for specific fields and combined logic:
-  - `id:zombie` or `i:zombie` - Filter by ID.
-  - `type:MONSTER` or `t:MONSTER` - Filter by record type.
-  - `category:weapon` or `c:weapon` - Filter by category.
-  - `bash.str_min:10` - Deep field search using dot-notation.
-  - `term1 term2` - Combine multiple terms (AND logic).
-- **Lazy mode**: click on displayed properties to copy them to filter input.
-- **In-app Version Switcher**: Pick stable, nightly, or tagged releases.
-
-## ⌨️ Controls
-
-### Global
-| Key                 | Action                               |
-|---------------------|--------------------------------------|
-| `Tab` / `Shift+Tab` | Cycle focus                          |
-| `Ctrl+G`            | Version Switcher                     |
-| `Ctrl+R`            | Reload Local Source (In-source mode) |
-| `?`                 | Help Overlay                         |
-| `q`                 | Quit                                 |
-
-### Filter Input
-| Key                 | Action                        |
-|---------------------|-------------------------------|
-| `↑` / `↓`           | Search history                |
-| `Ctrl+U`            | Clear filter                  |
-| `Ctrl+W`            | Delete last word              |
-| `Ctrl+A` / `Ctrl+E` | Move to start / end of line   |
-| `Enter`             | Confirm search and focus List |
-
-## 🚀 Usage
-
-### Automatic Data Download
-Launch the application and specify a game version. It will automatically download and cache the data for you:
-
-```bash
-cata-bm --game nightly
-```
-
-Or
-
-```bash
-cata-bm --file path/to/your/data.json
-cata-bm --source path/to/cataclysm-data/
-```
-
-### Other Options
-- **List available game versions**: `cata-bm --game-versions`
-- **Force refresh cached data**: `cata-bm --game stable --force`
-
-## 🌐 Web Version (Ratzilla)
-
-The repo now includes a WebAssembly build that reuses the same `ratatui` UI/state logic through [`ratzilla`](https://github.com/ratatui/ratzilla/).
-
-### Run in browser
-
-```bash
-rustup target add wasm32-unknown-unknown
-cargo install trunk
-trunk serve --features web
-```
-
-Open `http://localhost:8080`.
-
-### Notes
-- Uses the same keyboard-centric navigation, filtering, and clickable JSON filtering UX.
-- Data is fetched in-browser from `https://data.cataclysmbn-guide.com/data/<version>/all.json`.
-- Version picker in web currently includes `stable` and `nightly`.
 
 ## 📄 License
 Distributed under the MIT License. See `LICENSE` for more information.
