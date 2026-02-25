@@ -220,7 +220,7 @@ fn main() -> Result<()> {
 
     let cache_dir = data::get_cache_dir()?;
     let data_dir = data::get_data_dir()?;
-    let history_path = data_dir.join("history.txt");
+    let history_path = data_dir.join("filter.hst");
 
     if args.config {
         println!("App Paths:");
